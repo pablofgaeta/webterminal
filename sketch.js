@@ -3,20 +3,11 @@ function setup() {
 
   inputString = '';
   addLine();
+
+  // remove empty command side effect added
+  lineHistory.shift();
 }
 
 function draw() {
-  inputElement.innerHTML = user + inputString;
-}
-
-function execCommand(tokens)
-{
-    var rootcmd = tokens.shift();
-    for (var i = 0; i < commands.length; i++)
-    {
-        if (rootcmd === commands[i].name)
-        {
-            commands[i].exec(tokens);
-        }
-    }
+  inputElement.innerHTML = user + ' $ ' + inputString;
 }

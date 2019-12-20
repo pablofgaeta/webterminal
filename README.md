@@ -2,6 +2,8 @@
 An online web terminal for online shortcuts
 
 ## Current Commands
-+ chusr -> Change user name
-+ echo  -> prints line to stdout
-+ help  -> prints list of possible commands
++ chusr  : change username of current instance. Usage - chusr *usr_name* (' ' converted to '_').
++ echo   : print out arguments to terminal output.
++ help   : print list of all available commands.
++ clear  : Removes all elements from page. History remains saved.
++ clearh : Removes history of command strings saved.

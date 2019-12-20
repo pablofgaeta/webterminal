@@ -7,7 +7,7 @@ function keyPressed()
     var tokens = inputString.split(" ");
 
     // Check valid tokens in input
-    if (tokens.length > 1)
+    if (tokens.length > 0)
     {
       execCommand(tokens);
     }
@@ -33,7 +33,12 @@ function addLine()
   inputElement.className = classStyle;
   document.body.appendChild(inputElement);
 
-  lineHistory.push(inputElement);
+  lineHistory.push(inputString);
+  // Limit length to 30 elements
+  // if (lineHistory.length > 30)
+  // {
+  //   lineHistory.shift();
+  // }
 }
 
 // Updates current input line
@@ -46,8 +51,9 @@ function keyTyped()
 
 function validWriteKey(char)
 {
-  return (key >= 'a' && key <= 'z') ||
-         (key >= 'A' && key <= 'Z') ||
-         (key >= '0' && key <= '9') ||
-          key === ' ';
+  // return (key >= 'a' && key <= 'z') ||
+  //        (key >= 'A' && key <= 'Z') ||
+  //        (key >= '0' && key <= '9') ||
+  //         key === ' ';
+  return key >= ' ' && key <= '~';
 }
