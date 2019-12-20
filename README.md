@@ -10,4 +10,4 @@ An online web terminal for online shortcuts
 + clearh   : Removes history of command strings saved.
 
 ### Applications
-+ polybeat :Launches polybeat web app in new tab.
++ polybeat : Launches polybeat web app in new tab.

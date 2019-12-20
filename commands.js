@@ -50,6 +50,8 @@ let commands =
             { 
                 terminal.removeChild(terminal.firstChild);
             }
+            lineCount = 0;
+            multiLineCursor = 0;
         }
     },
     {
@@ -57,6 +59,7 @@ let commands =
         description: '<mark>clearh</mark>: Removes history of command strings saved.',
         exec: function(tokens) {
             lineHistory = [];
+            
         }
     },
     {
