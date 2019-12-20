@@ -3,9 +3,6 @@ function setup() {
 
   inputString = '';
   addLine();
-
-  // remove empty command side effect added
-  lineHistory.shift();
 }
 
 function draw() {

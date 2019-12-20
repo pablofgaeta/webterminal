@@ -3,19 +3,17 @@ function keyPressed()
 {
   if (keyCode === ENTER)
   {
-    // split input into tokens
-    var tokens = inputString.split(" ");
-
-    // Check valid tokens in input
-    if (tokens.length > 0)
-    {
-      execCommand(tokens);
-    }
+    // Record command to history
+    lineHistory.push(inputString);
+    
+    // Pass command to executor
+    execCommand(inputString.split(" "));
 
     // Add new lines for command
     addLine();
     inputString = '';
   }
+
   // delete character control
   else if (keyCode === BACKSPACE || keyCode === DELETE)
   {
@@ -31,14 +29,8 @@ function addLine()
   inputElement.style.padding = '5px';
   inputElement.value = ++lineCount;
   inputElement.className = classStyle;
-  document.body.appendChild(inputElement);
 
-  lineHistory.push(inputString);
-  // Limit length to 30 elements
-  // if (lineHistory.length > 30)
-  // {
-  //   lineHistory.shift();
-  // }
+  document.getElementById('terminal').append(inputElement);
 }
 
 // Updates current input line

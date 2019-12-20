@@ -1,11 +1,14 @@
 function execCommand(tokens)
 {
-    var rootcmd = tokens.shift();
-    for (var i = 0; i < commands.length; i++)
+    if (tokens.length > 0)
     {
-        if (rootcmd === commands[i].name)
+        var rootcmd = tokens.shift();
+        for (var i = 0; i < commands.length; i++)
         {
-            commands[i].exec(tokens);
+            if (rootcmd === commands[i].name)
+            {
+                commands[i].exec(tokens);
+            }
         }
     }
 }
@@ -42,9 +45,11 @@ let commands =
         name: 'clear',
         description: '<mark>clear</mark>: Removes all elements from page. History remains saved.',
         exec: function(tokens) {
-            var body = document.body;
-            while (body.hasChildNodes())
-            { body.removeChild(body.firstChild); }
+            var terminal = document.getElementById('terminal');
+            while (terminal.hasChildNodes())
+            { 
+                terminal.removeChild(terminal.firstChild);
+            }
         }
     },
     {
@@ -52,6 +57,13 @@ let commands =
         description: '<mark>clearh</mark>: Removes history of command strings saved.',
         exec: function(tokens) {
             lineHistory = [];
+        }
+    },
+    {
+        name: 'polybeat',
+        description: '<mark>polybeat</mark>: Launches polybeat web app in new tab.',
+        exec: function(tokens) {
+            window.open('https://pablofgaeta.github.io/Polybeat/');
         }
     }
 ]
