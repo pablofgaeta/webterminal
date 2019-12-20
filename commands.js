@@ -31,6 +31,7 @@ let commands =
         description: '<mark>chusr</mark>: change username of current instance. Usage - chusr < usr_name > (spaces converted to \'_\').',
         exec: function(tokens) {
             user = tokens.join("_");
+            localStorage.user = user;
         }
     },
     {
@@ -73,7 +74,7 @@ let commands =
         name: 'ls',
         description: '<mark>ls</mark>: Lists all files/subdirectories in current directory',
         exec: function(tokens) {
-            
+
         }
     }
 ]
