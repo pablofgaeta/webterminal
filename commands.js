@@ -31,7 +31,7 @@ let commands =
         description: '<mark>chusr</mark>: change username of current instance. Usage - chusr < usr_name > (spaces converted to \'_\').',
         exec: function(tokens) {
             user = tokens.join("_");
-            localStorage.user = user;
+            localStorage.setItem('user', user);
         }
     },
     {

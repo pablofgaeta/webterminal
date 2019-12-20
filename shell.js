@@ -18,10 +18,7 @@ if (typeof(Storage) !== "undefined")
 {
     if (localStorage.getItem('user') === null)
     {
-        localStorage.user = user = 'root_user';
+        localStorage.setItem('user', 'root_user');
     }
-    else
-    {
-        user = localStorage.user;
-    }
+    user = localStorage.getItem('user');
 }
