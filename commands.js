@@ -68,5 +68,12 @@ let commands =
         exec: function(tokens) {
             window.open('https://pablofgaeta.github.io/Polybeat/');
         }
+    }, 
+    {
+        name: 'ls',
+        description: '<mark>ls</mark>: Lists all files/subdirectories in current directory',
+        exec: function(tokens) {
+            
+        }
     }
 ]

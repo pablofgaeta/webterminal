@@ -6,5 +6,5 @@ function setup() {
 }
 
 function draw() {
-  inputElement.innerHTML = user + ' $ ' + inputString;
+  inputElement.innerHTML = user + ': ' + currentPath + '$ ' + inputString;
 }
