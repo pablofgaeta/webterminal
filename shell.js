@@ -2,6 +2,8 @@
 let lineHistory = [];
 let lineCount = 0;
 let currentPath = '~';
+let commandDict;
+let commands;
 
 // Always stores most recent div/string to write to
 let inputElement;
@@ -14,11 +16,9 @@ let txtstyle = 'b1';
 let classStyle = 'input';
 let user;
 
-if (typeof(Storage) !== "undefined")
-{
-    if (localStorage.getItem('user') === null)
-    {
-        localStorage.setItem('user', 'root_user');
-    }
-    user = localStorage.getItem('user');
-}
+let voiceObj = {
+    voiceAvailable: true,
+    voiceOption: null,
+    voices: null
+};
+let synth = window.speechSynthesis;

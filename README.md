@@ -5,9 +5,13 @@ An online web terminal for online shortcuts
 ### Utility
 + help     : print list of all available commands.
 + chusr    : change username of current instance. Usage - chusr <*usr_name*> (' ' converted to '_').
-+ echo     : print out arguments to terminal output.
 + clear    : Removes all elements from page. History remains saved.
 + clearh   : Removes history of command strings saved.
+
+### I/O
++ echo     : print out arguments to terminal output.
++ say      : System voice repeats back arguments. Use -lv to list voices. Use -sv to set voice by index.
+
 
 ### Applications
 + polybeat : Launches polybeat web app in new tab.
