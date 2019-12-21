@@ -11,6 +11,26 @@ function execCommand(tokens)
     }
 }
 
+// Print string to new line on terminal
+function tPrint(str)
+{
+    if (typeof str === 'string' || str instanceof String)
+        execCommand(['echo', str]);
+}
+
+// Return str with underlined at index (based 1)
+function underlineCursor(str, index)
+{
+  var finalstr = str;
+  if (index > 0 && index <= str.length)
+  {
+    var str1 = str.substring(0, index - 1);
+    var str2 = str.substring(index, str.length);
+    finalstr = str1 + '<u>' + str.charAt(index - 1) + '</u>' + str2;
+  }
+  return finalstr;
+}
+
 function createCommands()
 {
     commands =
@@ -118,16 +138,9 @@ function createCommands()
     ]
 
     // Create dictionary for fast look up
-    var index = 0;
-    commandDict = createStringDict('DEFAULT', index.toString());
-    for (index = 0; index < commands.length; index++)
+    commandDict = createStringDict('DEFAULT', '0');
+    for (var index = 0; index < commands.length; index++)
     {
         commandDict.create(commands[index].name, index.toString());
     }
-}
-
-function tPrint(str)
-{
-    if (typeof str === 'string' || str instanceof String)
-        execCommand(['echo', str]);
 }

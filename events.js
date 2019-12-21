@@ -3,8 +3,8 @@ function keyPressed()
 {
   if (keyCode === ENTER)
   {
-    // Remove cursor from html string
-    inputElement.innerHTML = inputElement.innerHTML.replace('|', '');
+    // Remove underline cursor from html string
+    inputElement.innerHTML = inputElement.innerHTML.replace('<u>', '').replace('</u>', '');
     
     // Record command to history
     lineHistory.push(inputString);
@@ -23,18 +23,18 @@ function keyPressed()
   // delete character control
   else if (keyCode === BACKSPACE || keyCode === DELETE)
   {
-    if (inputString.length > 0)
+    if (inputString.length > 0 && inlineCursor > 0)
     {
       // Case if cursor at start
-      if (inlineCursor === 0)
+      if (inlineCursor === 1)
       {
-        inputString = inputString.substring(1, inputString.length);
+        inputString = inputString.substring(inlineCursor, inputString.length);
+        if (inputString.length === 0) --inlineCursor; 
       }
       // Case if cursor at end
       else if (inlineCursor === inputString.length)
       {
-        inputString = inputString.substring(0, inputString.length - 1);
-        --inlineCursor;
+        inputString = inputString.substring(0, --inlineCursor);
       }
       // Case if cursor in middle
       else
@@ -48,7 +48,7 @@ function keyPressed()
   }
 
   // Move cursor inline
-  else if (keyCode === LEFT_ARROW && inlineCursor > 0)
+  else if (keyCode === LEFT_ARROW && inlineCursor > 1)
   { --inlineCursor; }
   else if (keyCode === RIGHT_ARROW && inlineCursor < inputString.length)
   { ++inlineCursor; }
@@ -56,10 +56,11 @@ function keyPressed()
   // Recall terminal history 
   else if (keyCode === DOWN_ARROW && multiLineCursor < lineHistory.length && lineHistory.length > 0)
   {
-    ++multiLineCursor;
+    ++multiLineCursor; 
     if (multiLineCursor === lineHistory.length)
     {
       inputString = '';
+      inlineCursor = 0;
     }
     else 
     {
@@ -93,10 +94,9 @@ function addLine()
 function keyTyped()
 {
   if (validWriteKey(key)){
-    var str1 = inputString.slice(0, inlineCursor);
-    var str2 = inputString.slice(inlineCursor, inputString.length);
-    inputString = str1 + key + str2;
-    inlineCursor++;
+    inputString = inputString.slice(0, inlineCursor) + key + inputString.slice(inlineCursor, inputString.length);
+    ++inlineCursor;
+    console.log(inputString + ': ' + inlineCursor);
   }
 }
 
