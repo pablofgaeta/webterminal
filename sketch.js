@@ -42,16 +42,6 @@ function preload()
   }
 }
 
-function idToVoice(index)
-{
-  var index = parseInt(index);
-  if (index >= 0 && index < voiceObj.voices.length)
-  {
-    voiceObj.voiceOption = voiceObj.voices[index];
-  }
-
-}
-
 function setup() {
   noCanvas();
 
@@ -62,5 +52,14 @@ function setup() {
 }
 
 function draw() {
-  inputElement.innerHTML = user + ': ' + currentPath + '$ ' + inputString;
+  var cursorOffset = inlineCursor > 0 ? 1 : 0;
+  drawCount = (drawCount + 1) % 50;
+
+  var cursor = inputString.charAt(inlineCursor - 1) + ((drawCount % 50 < 25) ? '𝖨' : '');
+
+
+  var str1 = inputString.substring(0, inlineCursor - 1);
+  var str2 = inputString.substring(inlineCursor, inputString.length);
+
+  inputElement.innerHTML = user + ': ' + currentPath + '$ ' + str1 + cursor + str2;
 }

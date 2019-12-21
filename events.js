@@ -3,6 +3,9 @@ function keyPressed()
 {
   if (keyCode === ENTER)
   {
+    // Remove cursor from html string
+    inputElement.innerHTML = inputElement.innerHTML.replace('|', '');
+    
     // Record command to history
     lineHistory.push(inputString);
     
@@ -12,17 +15,45 @@ function keyPressed()
     // Add new lines for command
     addLine();
     inputString = '';
+    // Update history cursor for new line
+    multiLineCursor = lineHistory.length;
+    inlineCursor = 0;
   }
 
   // delete character control
   else if (keyCode === BACKSPACE || keyCode === DELETE)
   {
     if (inputString.length > 0)
-      inputString = inputString.substring(0, inputString.length - 1);
+    {
+      // Case if cursor at start
+      if (inlineCursor === 0)
+      {
+        inputString = inputString.substring(1, inputString.length);
+      }
+      // Case if cursor at end
+      else if (inlineCursor === inputString.length)
+      {
+        inputString = inputString.substring(0, inputString.length - 1);
+        --inlineCursor;
+      }
+      // Case if cursor in middle
+      else
+      {
+        var str1 = inputString.slice(0, inlineCursor - 1);
+        var str2 = inputString.slice(inlineCursor, inputString.length);
+        inputString = str1 + str2;
+        --inlineCursor;
+      }
+    }
   }
 
-  // else if (keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW)
+  // Move cursor inline
+  else if (keyCode === LEFT_ARROW && inlineCursor > 0)
+  { --inlineCursor; }
+  else if (keyCode === RIGHT_ARROW && inlineCursor < inputString.length)
+  { ++inlineCursor; }
 
+  // Recall terminal history 
   else if (keyCode === DOWN_ARROW && multiLineCursor < lineHistory.length && lineHistory.length > 0)
   {
     ++multiLineCursor;
@@ -31,7 +62,10 @@ function keyPressed()
       inputString = '';
     }
     else 
-    { inputString = lineHistory[multiLineCursor]; }
+    {
+      inputString = lineHistory[multiLineCursor];
+      inlineCursor = inputString.length;
+    }
 
   }
   else if (keyCode === UP_ARROW && multiLineCursor > 0 && lineHistory.length > 0)
@@ -40,6 +74,7 @@ function keyPressed()
 
     while (multiLineCursor >= lineHistory.length) { --multiLineCursor; } 
     inputString = lineHistory[multiLineCursor];
+    inlineCursor = inputString.length;
   }
 }
 
@@ -52,14 +87,16 @@ function addLine()
   inputElement.className = classStyle;
 
   document.getElementById('terminal').append(inputElement);
-  multiLineCursor = lineCount;
 }
 
 // Updates current input line
 function keyTyped()
 {
   if (validWriteKey(key)){
-    inputString += key;
+    var str1 = inputString.slice(0, inlineCursor);
+    var str2 = inputString.slice(inlineCursor, inputString.length);
+    inputString = str1 + key + str2;
+    inlineCursor++;
   }
 }
 

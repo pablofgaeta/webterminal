@@ -10,6 +10,7 @@ let inputElement;
 let inputString;
 let inlineCursor = 0;
 let multiLineCursor = 0;
+let drawCount = 0;
 
 // Style settings
 let txtstyle = 'b1';
