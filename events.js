@@ -87,9 +87,13 @@ function keyPressed()
 function addLine()
 {
   inputElement = document.createElement('div');
-  inputElement.style.padding = '5px';
   inputElement.value = ++lineCount;
-  inputElement.className = classStyle;
+
+  // Styles
+  inputElement.className = txtstyle.class;
+  inputElement.style.color = txtstyle.color;
+  inputElement.style.paddingLeft = txtstyle['padding-left'];
+  inputElement.style.paddingBottom = txtstyle['padding-bottom'];
 
   document.getElementById('terminal').append(inputElement);
 

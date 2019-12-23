@@ -1,6 +1,7 @@
 body {
     width: 100vw;
     height: 100vh;
+    /* background-image: url(https://img.freepik.com/free-vector/colorful-people-doing-different-actions_52683-676.jpg?size=338&ext=jpg); */
     background: rgb(208,62,187);
     background: linear-gradient(180deg, rgba(208,62,187,1) 0%, rgba(96,143,224,0.9668242296918768) 50%, rgba(208,62,187,1) 100%);
 }
@@ -32,7 +33,10 @@ body {
     font-weight: 50;
     font-size : 20px;
     margin: 0 auto;
-    /* display: fixed;
-    right: 0;
-    top: 0; */
+}
+
+.input {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }

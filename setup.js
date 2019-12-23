@@ -26,11 +26,21 @@ function retrieveLocalStorage()
     if (typeof(Storage) !== "undefined")
   {
     // Get user info
-    if (localStorage.getItem('user') === null)
-    {
-      localStorage.setItem('user', 'root_user');
-    }
+    if (localStorage.getItem('user') === null) { localStorage.setItem('user', 'root_user'); }
     user = localStorage.getItem('user');
+
+    // Get style preferences
+    if (localStorage.getItem('text-class') === null) { localStorage.setItem('text-class', 'input'); }
+    if (localStorage.getItem('text-color') === null) { localStorage.setItem('text-color', '#ffffff'); }
+    if (localStorage.getItem('padding-left') === null) { localStorage.setItem('padding-left', '10px'); }
+    if (localStorage.getItem('padding-bottom') === null) { localStorage.setItem('padding-bottom', '10px'); }
+    txtstyle = {
+      class: localStorage.getItem('text-class'),
+      color: localStorage.getItem('text-color'),
+      'padding-left': localStorage.getItem('padding-left'),
+      'padding-bottom': localStorage.getItem('padding-bottom')
+    };
+    
 
 
     // Get voice preferences

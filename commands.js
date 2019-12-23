@@ -135,6 +135,77 @@ function createCommands()
                     tPrint('Wrong num of args or no voice available on this browser. 😭');
                 } 
             }
+        },
+        // {
+        //     name: 'settings',
+        //     description: '',
+        //     exec: function(tokens) {
+        //         textcolor:
+        //             addLine();
+        //             inputElement.style.display = 'inline-block';
+
+        //             var txt = createInlineText('Text color: &nbsp; &nbsp; ');
+        //             inputElement.append(txt);
+
+        //             var col = document.createElement('input');
+        //             col.style.display = 'inline-block';
+        //             col.type = 'color';
+        //             col.value = "#ff00ff";
+        //             inputElement.append(col);
+                
+
+
+                
+                
+
+        //     }
+        // },
+        {
+            name: 'txtcol',
+            description: '<mark>txtcol</mark>: Choose text color using html color names.',
+            exec: function(tokens) {
+                // Create new line as wrapper 
+                addLine();
+                inputElement.style.position = 'relative';
+
+                // div to give line height
+                var msg = document.createElement('div');
+                msg.style.display = 'inline-block';
+                inputElement.append(msg);
+
+                // Color picker
+                var col = document.createElement('input');
+                col.style.display = 'inline-block';
+                col.style.position = 'absolute';
+                col.style.height = '22px';
+                col.style.width = '30px';
+                col.style.bottom = '0 auto';
+                col.style.top = '0 auto';
+                col.type = 'color';
+                col.value = "#ff00ff";
+                inputElement.append(col);
+                
+                // Submit button
+                var submit = document.createElement('button');
+                submit.style.display = 'inline-block';
+                submit.style.position = 'absolute';
+                submit.innerHTML = 'submit :)';
+                submit.style.bottom = 'auto';
+                submit.style.top = 'auto';
+                submit.style.left = '60px';
+                submit.style.height = '26px';
+                inputElement.append(submit);
+
+                submit.onclick =  function() {
+                    var inputs = document.getElementsByClassName(txtstyle.class);
+                    for (var i = 0; i < inputs.length; i++)
+                    {
+                        inputs[i].style.color = col.value;
+                    }
+                    txtstyle.color = col.value;
+                    localStorage.setItem('text-color', col.value);
+                }
+            }
         }
     ]
 
@@ -144,4 +215,15 @@ function createCommands()
     {
         commandDict.create(commands[index].name, index.toString());
     }
+}
+
+function createInlineText(str)
+{
+    var txt = document.createElement('div');
+    txt.style.display = 'inline-block'
+    txt.className = txtstyle.class;
+    txt.style.color = txtstyle.color;
+    txt.innerHTML = str;
+
+    return txt;
 }

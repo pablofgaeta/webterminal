@@ -15,8 +15,13 @@ let scrollDown = false;
 
 
 // Style settings
-let txtstyle = 'b1';
-let classStyle = 'input';
+let txtstyle = {
+    class: 'input',
+    color: '#ffffff',
+    'padding-left': '10px',
+    'padding-bottom': '10px',
+};
+
 let user;
 
 let voiceObj = {
