@@ -24,3 +24,15 @@ body {
     font-size : 3vw;
     margin: 0 auto;
 }
+
+.disclaimer {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 50;
+    font-size : 20px;
+    margin: 0 auto;
+    /* display: fixed;
+    right: 0;
+    top: 0; */
+}
