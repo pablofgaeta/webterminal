@@ -136,33 +136,9 @@ function createCommands()
                 } 
             }
         },
-        // {
-        //     name: 'settings',
-        //     description: '',
-        //     exec: function(tokens) {
-        //         textcolor:
-        //             addLine();
-        //             inputElement.style.display = 'inline-block';
-
-        //             var txt = createInlineText('Text color: &nbsp; &nbsp; ');
-        //             inputElement.append(txt);
-
-        //             var col = document.createElement('input');
-        //             col.style.display = 'inline-block';
-        //             col.type = 'color';
-        //             col.value = "#ff00ff";
-        //             inputElement.append(col);
-                
-
-
-                
-                
-
-        //     }
-        // },
         {
             name: 'txtcol',
-            description: '<mark>txtcol</mark>: Choose text color using html color names.',
+            description: '<mark>txtcol</mark>: Allows user to customize text color with html5 color input.',
             exec: function(tokens) {
                 // Create new line as wrapper 
                 addLine();
