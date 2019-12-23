@@ -33,6 +33,7 @@ function underlineCursor(str, index)
 
 function createCommands()
 {
+    // Command objects
     commands =
     [
         {

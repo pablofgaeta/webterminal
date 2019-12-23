@@ -11,6 +11,8 @@ let inputString;
 let inlineCursor = 0;
 let multiLineCursor = 0;
 let drawCount = 0;
+let scrollDown = false;
+
 
 // Style settings
 let txtstyle = 'b1';
@@ -18,7 +20,7 @@ let classStyle = 'input';
 let user;
 
 let voiceObj = {
-    voiceAvailable: true,
+    voiceAvailable: false,
     voiceOption: null,
     voices: null
 };

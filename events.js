@@ -1,6 +1,7 @@
 // Used for state of a line. Execute and create new line
 function keyPressed()
 {
+  // Enter control for execution and new command
   if (keyCode === ENTER)
   {
     // Remove underline cursor from html string
@@ -53,7 +54,7 @@ function keyPressed()
   else if (keyCode === RIGHT_ARROW && inlineCursor < inputString.length)
   { ++inlineCursor; }
 
-  // Recall terminal history 
+  // Recall earlier terminal history
   else if (keyCode === DOWN_ARROW && multiLineCursor < lineHistory.length && lineHistory.length > 0)
   {
     ++multiLineCursor; 
@@ -67,8 +68,8 @@ function keyPressed()
       inputString = lineHistory[multiLineCursor];
       inlineCursor = inputString.length;
     }
-
   }
+  // Recall more recent terminal history
   else if (keyCode === UP_ARROW && multiLineCursor > 0 && lineHistory.length > 0)
   {
     --multiLineCursor;
@@ -77,6 +78,9 @@ function keyPressed()
     inputString = lineHistory[multiLineCursor];
     inlineCursor = inputString.length;
   }
+
+  // Prep draw fxn to scroll to bottom
+  scrollDown = true;
 }
 
 // Creates new HTML div element to write on a new line
@@ -88,6 +92,9 @@ function addLine()
   inputElement.className = classStyle;
 
   document.getElementById('terminal').append(inputElement);
+
+  // Prep draw fxn to scroll to bottom
+  scrollDown = true;
 }
 
 // Updates current input line
@@ -96,8 +103,10 @@ function keyTyped()
   if (validWriteKey(key)){
     inputString = inputString.slice(0, inlineCursor) + key + inputString.slice(inlineCursor, inputString.length);
     ++inlineCursor;
-    console.log(inputString + ': ' + inlineCursor);
   }
+
+  // Prep draw fxn to scroll to bottom
+  scrollDown = true;
 }
 
 function validWriteKey(char)
