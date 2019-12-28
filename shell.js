@@ -12,6 +12,8 @@ let inlineCursor = 0;
 let multiLineCursor = 0;
 let drawCount = 0;
 let scrollDown = false;
+let abstract = false;
+let abstractMode;
 
 
 // Style settings

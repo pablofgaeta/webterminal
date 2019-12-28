@@ -14,8 +14,9 @@ function setup() {
 
 function draw() {
   var commandStr = underlineCursor(inputString, inlineCursor);
+  var prefix = (abstract) ? '' : (user + ': ' + currentPath + '$ ');
 
-  inputElement.innerHTML = user + ': ' + currentPath + '$ ' + commandStr;
+  inputElement.innerHTML = prefix + commandStr;
 
   if (scrollDown)
   {

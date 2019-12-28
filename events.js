@@ -10,6 +10,24 @@ function keyPressed()
     // Record command to history
     lineHistory.push(inputString);
     
+    // if (abstract) {
+    //   if (abstractMode === "jsmode") {
+    //     if (inputString === "-- exit") {
+    //       abstractMode = '';
+    //       abstract = false;
+    //     }
+    //     else {
+    //       inputString.replace("-- ", "");
+    //       var hello = eval(inputString);
+    //       console.log(hello);
+    //       tPrint(hello.toString());
+    //       addLine();
+    //       inputString = "-- ";
+    //     }
+    //   }
+    //   return;
+    // }
+
     // Pass command to executor
     execCommand(inputString.split(" "));
 

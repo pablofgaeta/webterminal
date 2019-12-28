@@ -182,6 +182,16 @@ function createCommands()
                     localStorage.setItem('text-color', col.value);
                 }
             }
+        }, 
+        {
+            name: 'jsmode',
+            description: '<mark>jsmode</mark>',
+            exec: function(tokens) {
+                // addLine();
+                // inputString = '-- ';
+                // abstract = true;
+                // abstractMode = 'jsmode';
+            }
         }
     ]
 
