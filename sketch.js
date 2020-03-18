@@ -8,8 +8,13 @@ function setup() {
 
   createCommands();
 
-  inputString = '';
   addLine();
+  inputString = 'help';
+  var prefix = (abstract) ? '' : (user + ': ' + currentPath + '$ ');
+  inputElement.innerHTML = prefix + inputString;
+  execCommand(inputString.split(" "));
+  addLine();
+  inputString = '';
 }
 
 function draw() {

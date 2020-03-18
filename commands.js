@@ -62,14 +62,14 @@ function createCommands()
                 addLine();
                 inputElement.innerHTML = tokens.join(" ");
             }
-        }, 
+        },
         {
             name: 'clear',
             description: '<mark>clear</mark>: Removes all elements from page. History remains saved.',
             exec: function(tokens) {
                 var terminal = document.getElementById('terminal');
                 while (terminal.hasChildNodes())
-                { 
+                {
                     terminal.removeChild(terminal.firstChild);
                 }
                 lineCount = 0;
@@ -81,13 +81,19 @@ function createCommands()
             description: '<mark>clearh</mark>: Removes history of command strings saved.',
             exec: function(tokens) {
                 lineHistory = [];
-                
+
             }
         },
         {
             name: 'polybeat',
             description: '<mark>polybeat</mark>: Launches polybeat web app in new tab.',
             exec: function(tokens) {
+               // var iframe = document.createElement('iframe');
+               // iframe.src = 'https://pablofgaeta.github.io/Polybeat/';
+               // iframe.style.position = 'fixed';
+               // iframe.style.top = "" + (windowHeight / 4) + "px";
+               // iframe.style.left = "" + (windowWidth / 4) + "px";
+               // document.body.appendChild(iframe);
                 window.open('https://pablofgaeta.github.io/Polybeat/');
             }
         },
@@ -133,14 +139,14 @@ function createCommands()
                 else
                 {
                     tPrint('Wrong num of args or no voice available on this browser. 😭');
-                } 
+                }
             }
         },
         {
             name: 'txtcol',
             description: '<mark>txtcol</mark>: Allows user to customize text color with html5 color input.',
             exec: function(tokens) {
-                // Create new line as wrapper 
+                // Create new line as wrapper
                 addLine();
                 inputElement.style.position = 'relative';
 
@@ -160,7 +166,7 @@ function createCommands()
                 col.type = 'color';
                 col.value = "#ff00ff";
                 inputElement.append(col);
-                
+
                 // Submit button
                 var submit = document.createElement('button');
                 submit.style.display = 'inline-block';
@@ -182,7 +188,7 @@ function createCommands()
                     localStorage.setItem('text-color', col.value);
                 }
             }
-        }, 
+        },
         {
             name: 'jsmode',
             description: '<mark>jsmode</mark>',
